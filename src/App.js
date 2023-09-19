@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import { useState } from "react";
 import "./App.css";
+import Swal from 'sweetalert2'
 
 function App() {
   // MAKE API CALLS AND VALIDATE THE FORM, THEN SUBMIT FORM DETAILS TO THE DATAABASE
@@ -10,51 +11,42 @@ function App() {
   const [email, setEmail] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(firstName, lastName, phoneNum, email);
+    // console.log(firstName, lastName, phoneNum, email);
     const data = {
       first: firstName,
       last: lastName,
-      email: email,
       phone: phoneNum,
+      email: email,
     };
-    // axios.post("https://sheetdb.io/api/v1/nmdtoigixgu7c", {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   mode: "cors",
-    //   body: JSON.stringify(data),
-    // })
-    // fetch('https://sheetdb.io/api/v1/nmdtoigixgu7c')
-    // .then((response) => {
-    //     console.log(response);
-    //     // setEmail("");
-    //     // setFirstName("");
-    //     // setLastName("");
-    //     // setPhoneNum("");
-    //   })
-    //   .catch((error) =>{
-    //     console.log(error)
-    //   })
+   
 
-    fetch(
-      "https://sheetdb.io/api/v1/nmdtoigixgu7c",
-      {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch("https://sheetdb.io/api/v1/nmdtoigixgu7c", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((r) => r.json())
-      .then((data) => {
-        // The response comes here
-        console.log(data);
+      .then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'you have successfully registered!',
+          text: 'An email will be sent to you after registration has been confirmed',
+          showConfirmButton: false,
+          footer: '<a href="/">Read more about the Study Webinar</a>',
+          timer: 2500
+        });
+        setEmail(" ");
+        setPhoneNum(" ");
+        setLastName(" ");
+        setFirstName(" ");
       })
       .catch((error) => {
         // Errors are reported there
         console.log(error);
+       
       });
   };
 
@@ -124,7 +116,7 @@ function App() {
                           className="form-control"
                           type="email"
                           name="email"
-                          placeholder="E-mail Address"
+                          placeholder="E-mail"
                           required
                         />
                         <div className="valid-feedback">
