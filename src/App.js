@@ -11,15 +11,14 @@ function App() {
   const [email, setEmail] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(firstName, lastName, phoneNum, email);
+  
     const data = {
       first: firstName,
       last: lastName,
       phone: phoneNum,
       email: email,
     };
-   
-
+  
     fetch("https://sheetdb.io/api/v1/nmdtoigixgu7c", {
       method: "POST",
       mode: "cors",
@@ -32,23 +31,25 @@ function App() {
       .then(() => {
         Swal.fire({
           icon: 'success',
-          title: 'you have successfully registered!',
+          title: 'You have successfully registered!',
           text: 'An email will be sent to you after registration has been confirmed',
           showConfirmButton: false,
           footer: '<a href="/">Read more about the Study Webinar</a>',
           timer: 2500
         });
-        setEmail(" ");
-        setPhoneNum(" ");
-        setLastName(" ");
-        setFirstName(" ");
+  
+        // Reset the input fields to their initial placeholder values
+        setFirstName("");
+        setLastName("");
+        setPhoneNum("");
+        setEmail("");
       })
       .catch((error) => {
-        // Errors are reported there
+        // Handle errors
         console.log(error);
-       
       });
   };
+  
 
   // numbers only input (function)
   // const [value, setValue] = useState("");
