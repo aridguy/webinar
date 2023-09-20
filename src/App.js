@@ -48,6 +48,32 @@ function App() {
         // Handle errors
         console.log(error);
       });
+
+      fetch("send_email.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `email=${email}`, // Replace with the email address
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            console.log("Email sent successfully");
+          } else {
+            console.error("Email sending failed");
+          }
+        })
+        .catch((error) => {
+          console.error("Error sending email:", error);
+        });
+    
+
+
+
+
+
+      // ending of the button 
   };
   
 
