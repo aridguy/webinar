@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Your custom message
     $message = "Hello, This is a custom message.";
-
+    
     // Send the email
     $to = $email;
     $subject = "all messages here is the link to the program";

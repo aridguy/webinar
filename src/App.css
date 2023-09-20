@@ -22,20 +22,11 @@ html, body {
       align-items: center;
       text-align: center;
       min-height: 100vh;
+      position: relative;
+    bottom: 4em;
 }
 
-@media only screen and (max-width: 414px) {
-    .form-content .form-items {
-        border: 3px solid #fff;
-        padding: 41px;
-        display: inline-block;
-        width: 100%;
-        min-width: 368px;
-        border-radius: 10px;
-        text-align: left;
-        transition: all 0.4s ease;
-    }
-  }
+
 
 .form-holder .form-content {
     position: relative;
@@ -63,6 +54,16 @@ html, body {
     border-radius: 10px;
     text-align: left;
     -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+.form-content .form-items {
+    border: 3px solid #fff;
+    padding: 25px;
+    display: inline-block;
+    width: 100%;
+    min-width: 330px;
+    border-radius: 10px;
+    text-align: left;
     transition: all 0.4s ease;
 }
 
